@@ -1,0 +1,17 @@
+{
+  "name": "myCheckTool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Chang Kai-Jie",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "dependencies": {
+    "puppeteer": "^2.1.1"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}

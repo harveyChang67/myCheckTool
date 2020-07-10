@@ -1,0 +1,12 @@
+{
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
+    "require": {
+        "php": "7.2",
+        "jaeger/querylist": "4.0",
+        "vlucas/phpdotenv": "^4.1"
+    }
+}
