@@ -5,6 +5,7 @@ basic check
     console.log
     all ajax 200
  */
+const func = require('mylib/func');
 const puppeteer = require('puppeteer');
 
 const test_domain = "https://www.google.com";
@@ -30,5 +31,11 @@ describe.each([
     it('should be titled "Google"', async () => {
         await expect(page.title()).resolves.toMatch('Google');
     });
+
+    it('Display:block', async () => {
+        await func.checkCSSProperty(page,'#body > center','display','block');
+    });
+
+
 
 });

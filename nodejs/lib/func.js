@@ -8,7 +8,7 @@ async function clickToDisplay(_page, _selector, _toDisplay) {
     expect(bDisplay).toBe('block');
 }
 
-//  TODO: checkCSSProperty
+//  checkCSSProperty
 async function checkCSSProperty(_page, _selector, _property, expect_value) {
     let el = await _page.$eval(_selector, (element, property) => window.getComputedStyle(element).getPropertyValue(property), _property);
     expect(el).toBe(expect_value);
@@ -19,7 +19,15 @@ async function checkMultiCSSProperty(_page, _selector, _property, _expect) {
 
 }
 
-//  TODO: checkUrlPattern
+//  TODO: checkMultikUrlPattern
+async function checkMultikUrlPattern(_page, _selector, _property, _expect) {
+
+}
+
+//  TODO: getAllUrlOnPage
+async function checkMultikUrlPattern(_page) {
+
+}
 
 
 module.exports = {
