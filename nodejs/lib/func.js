@@ -1,19 +1,28 @@
-//  TODO: click element.A -> element.B display:block
-async function clickToDisplay(_page, _selector, _toDisplay, expect_value) {
+//  click element.A -> element.B display:block
+async function clickToDisplay(_page, _selector, _toDisplay) {
     await _page.click(_selector);
-    await _page.waitFor(1000);
+    await _page.waitFor(3000);
+    var bDisplay = await _page.$eval(_toDisplay, (el) => window.getComputedStyle(el).getPropertyValue("display"));
+    await _page.waitFor(3000);
     //  check open
-    expect(await _page.$eval(_toDisplay, (el) => window.getComputedStyle(el).getPropertyValue("display"))).toBe('block');
+    expect(bDisplay).toBe('block');
 }
 
 //  TODO: checkCSSProperty
-async function checkCSSProperty(_page, _selector, _property, _expect) {
-    var _el = await _page.$eval(_selector, (el, _property) => window.getComputedStyle(el).getPropertyValue(_property));
-    expect(_el).toBe(_expect);
+async function checkCSSProperty(_page, _selector, _property, expect_value) {
+    let el = await _page.$eval(_selector, (element, property) => window.getComputedStyle(element).getPropertyValue(property), _property);
+    expect(el).toBe(expect_value);
 }
 
 //  TODO: checkMultipleElementCSSProperty
 async function checkMultiCSSProperty(_page, _selector, _property, _expect) {
-    var _el = await _page.$eval(_selector, (el, _property) => window.getComputedStyle(el).getPropertyValue(_property));
-    expect(_el).toBe(_expect);
+
 }
+
+//  TODO: checkUrlPattern
+
+
+module.exports = {
+    clickToDisplay: clickToDisplay,
+    checkCSSProperty: checkCSSProperty,
+};
