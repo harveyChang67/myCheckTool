@@ -26,7 +26,17 @@ async function checkMultikUrlPattern(_page, _selector, _property, _expect) {
 
 //  TODO: getAllUrlOnPage
 async function getAllUrlOnPage(_page) {
-
+    // var links = await page.$$eval('a', e => e.map(
+    //     els => ({href: els.href, content: els.textContent,})
+    //     // els => [els.href, els.textContent]
+    // ));
+    //
+    // // console.log(links);
+    //
+    // for(var item of links){
+    //     result = await page.click(item.href);
+    //     expect(result.status()).toBe(200);
+    // }
 }
 
 
