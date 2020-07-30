@@ -25,7 +25,7 @@ async function checkMultikUrlPattern(_page, _selector, _property, _expect) {
 }
 
 //  TODO: getAllUrlOnPage
-async function checkMultikUrlPattern(_page) {
+async function getAllUrlOnPage(_page) {
 
 }
 
