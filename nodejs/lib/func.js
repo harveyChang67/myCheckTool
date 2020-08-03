@@ -34,7 +34,7 @@ async function getAllUrlOnPage(_page) {
     // // console.log(links);
     //
     // for(var item of links){
-    //     result = await page.click(item.href);
+    //     result = await page.click(item.href);    //  goto  ?
     //     expect(result.status()).toBe(200);
     // }
 }
