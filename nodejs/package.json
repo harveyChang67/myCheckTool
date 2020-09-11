@@ -5,10 +5,12 @@
   "main": "index.js",
   "author": "Chang Kai-Jie",
   "devDependencies": {
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "jest-extended": "^0.11.5"
   },
   "dependencies": {
-    "puppeteer": "^5.1.0"
+    "puppeteer": "^5.1.0",
+    "puppeteer-autoscroll-down": "^0.1.6"
   },
   "scripts": {
     "test": "jest"
