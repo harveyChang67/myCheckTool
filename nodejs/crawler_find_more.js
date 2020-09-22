@@ -1,15 +1,12 @@
-const func = require('./lib/func.js');
 const puppeteer = require('puppeteer');
-
 
 // const targetUrl = 'https://ranking-deli.jp/8/list/';
 // const targetUrl = 'https://ranking-deli.jp/8/local180/';
 const targetUrl = 'https://ranking-deli.jp/8/local161/station1663/';
 const targetSelector = 'body > main > div.u-container.u-spaceBetween > div.l-mainColumn > section > div > section > div.head > div > h3 > span > a';
-const target_findout = 'body';
+const moreSelector = 'body > main > div.u-container.u-spaceBetween > div.l-mainColumn > section > button';
 
-
-var browser, page, sub_page, response = null;
+var browser, page, response = null;
 
 (async () => {
     browser = await puppeteer.launch({headless: false});
@@ -20,19 +17,33 @@ var browser, page, sub_page, response = null;
     await page.goto(targetUrl, {waitUntil: 'load', timeout: 50000});
     await page.waitFor('img');
 
-    sub_page = await browser.newPage();
-    sub_page.setViewport({width: 1280, height: 926});
-// await sub_page.emulate(iPhonex);
-// await sub_page.authenticate({username: user, password: pass});
-    await sub_page.goto(targetUrl, {waitUntil: 'load', timeout: 50000});
-    await sub_page.waitFor('img');
+    do {
+        var bMore = false;
+
+        console.log(bMore);
+        bMore = await page.$(moreSelector).then(res => !!res);
+        console.log(bMore);
+        if (bMore) {
+            await page.hover(moreSelector);
+            await page.click(moreSelector);
+        } else {
+            await page.hover('#l--footer > ul > li:nth-child(1) > a');
+        }
+
+        await page.waitFor(1000);
+    } while (bMore);
+
 
     var dump_data = [];
-    var target_Urls = await page.$$eval(targetSelector, e => e.map((el) => el.href));
-    console.log(target_Urls.length);
+    var shopUrls = await page.$$eval(targetSelector, e => e.map((el) => el.href));
+    console.log(shopUrls.length);
 
-    for (const url of target_Urls) {
-        var body_class = await func.goto_findout(sub_page, url, target_findout, node => node.className);
+    for (const url of shopUrls) {
+        await page.goto(url, {waitUntil: 'load', timeout: 50000});
+        await page.waitFor('img');
+
+        const el = await page.$('body')
+        const body_class = await (await el.getProperty('className')).jsonValue();
 
         console.log(url + '     :     ' + body_class);
         dump_data = dump_data.concat([
@@ -42,7 +53,6 @@ var browser, page, sub_page, response = null;
         await page.waitFor(1000);
     }
 
-    //  write to file
     var fs = require('fs');
     var file = fs.createWriteStream('crawler_dump.txt');
     file.on('error', function (err) {
@@ -51,6 +61,5 @@ var browser, page, sub_page, response = null;
     dump_data.forEach(value => file.write(`${value.url}\t\t\t${value.body_class}\r\n`));
     file.end();
 
-    //  close puppeteer
     browser.close();
 })();

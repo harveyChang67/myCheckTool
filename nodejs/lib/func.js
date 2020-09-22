@@ -39,8 +39,18 @@ async function getAllUrlOnPage(_page) {
     // }
 }
 
+//  main page -> selector(href) -> sub page -> find out one selector
+async function goto_findout(page, url, find_selector, callback) {
+    await page.goto(url, {waitUntil: 'load', timeout: 50000});
+    // await page.waitFor('img');
+    await page.hover(find_selector);
+    await page.waitFor(1000);
+    return await page.$eval(find_selector, callback);
+}
+
 
 module.exports = {
     clickToDisplay: clickToDisplay,
     checkCSSProperty: checkCSSProperty,
+    goto_findout: goto_findout,
 };
