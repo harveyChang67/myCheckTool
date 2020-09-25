@@ -48,6 +48,14 @@ async function goto_findout(page, url, find_selector, callback) {
     return await page.$eval(find_selector, callback);
 }
 
+//  TODO
+// const isVisible =
+//     const e = document.querySelector('my-selector');
+//     if (!e)
+//         return false;
+//     const style = window.getComputedStyle(node);
+//     return style && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+
 
 module.exports = {
     clickToDisplay: clickToDisplay,
