@@ -9,7 +9,7 @@ const func = require('mylib/func');
 const puppeteer = require('puppeteer');
 
 const test_domain = "https://www.google.com";
-
+jest.setTimeout(12000);
 //  just for sample
 describe.each([
     ['/', ''],
@@ -33,9 +33,23 @@ describe.each([
     });
 
     it('Display:block', async () => {
-        await func.checkCSSProperty(page,'#body > center','display','block');
+        await func.checkCSSProperty(page, '#body > center', 'display', 'block');
     });
 
+    //  Get in one time, check in one time
+    it('The Google image should be correct', async () => {
+        var img_rule = {
+            alt: 'Google',
+            src: expect.stringMatching(/.+\.png/),
+            width: 272,
+            height: 92
+        };
 
+        var img_el = await page.$eval('img#hplogo', el => {
+            return {alt: el.alt, src: el.src, width: el.width, height: el.height}
+        })
+
+        expect(img_el).toMatchObject(img_rule);
+    });
 
 });
