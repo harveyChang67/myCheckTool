@@ -16,3 +16,5 @@ Get in one time, check in one time.
 
         expect(img_el).toMatchObject(img_rule);
 ```
+
+TODO: Rule -> Auto get attribute.
