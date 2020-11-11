@@ -1,10 +1,8 @@
 const puppeteer = require('puppeteer');
 
-// const targetUrl = 'https://ranking-deli.jp/8/list/';
-// const targetUrl = 'https://ranking-deli.jp/8/local180/';
-const targetUrl = 'https://ranking-deli.jp/8/local161/station1663/';
-const targetSelector = 'body > main > div.u-container.u-spaceBetween > div.l-mainColumn > section > div > section > div.head > div > h3 > span > a';
-const moreSelector = 'body > main > div.u-container.u-spaceBetween > div.l-mainColumn > section > button';
+const targetUrl = '';
+const targetSelector = '';
+const moreSelector = '';
 
 var browser, page, response = null;
 

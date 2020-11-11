@@ -9,6 +9,7 @@
     "jest-extended": "^0.11.5"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "puppeteer": "^5.1.0",
     "puppeteer-autoscroll-down": "^0.1.6"
   },
