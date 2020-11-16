@@ -1,4 +1,4 @@
-#   myCheckTool
+#   Puppeteer + Jest
 
 Get in one time, check in one time.
 
@@ -18,3 +18,14 @@ Get in one time, check in one time.
 ```
 
 TODO: Rule -> Auto get attribute.
+
+
+#   Crawler
+## using Proxy
+- git clone https://github.com/zet4/alpine-tor.git
+- require('puppeteer-page-proxy');
+```javascript
+    const useProxy = require('puppeteer-page-proxy');
+    var page = await browser.newPage();
+    await useProxy(page, 'http://127.0.0.1:8118');      //  <-- alpine-tor
+```

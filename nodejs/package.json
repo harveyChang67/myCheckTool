@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "exceljs": "^4.2.0",
     "puppeteer": "^5.1.0",
-    "puppeteer-autoscroll-down": "^0.1.6"
+    "puppeteer-autoscroll-down": "^0.1.6",
+    "puppeteer-page-proxy": "^1.2.8"
   },
   "scripts": {
     "test": "jest"
