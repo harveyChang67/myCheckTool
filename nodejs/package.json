@@ -13,6 +13,7 @@
     "exceljs": "^4.2.0",
     "puppeteer": "^5.1.0",
     "puppeteer-autoscroll-down": "^0.1.6",
+    "puppeteer-cluster": "^0.22.0",
     "puppeteer-page-proxy": "^1.2.8"
   },
   "scripts": {
