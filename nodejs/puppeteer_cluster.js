@@ -26,7 +26,7 @@ const useProxy = require('puppeteer-page-proxy');
         console.log(`  Error crawling ${data}: ${err.message}`);
     });
 
-    for (var i = 0; i < 40; i++) {
+    for (var i = 0; i < 60; i++) {
         cluster.queue('https://api.ipify.org');
     }
 
