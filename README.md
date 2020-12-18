@@ -29,3 +29,6 @@ TODO: Rule -> Auto get attribute.
     var page = await browser.newPage();
     await useProxy(page, 'http://127.0.0.1:8118');      //  <-- alpine-tor
 ```
+
+#   Robots.txt test
+robots.txt -> JSON Object -> robots-txt-guard
