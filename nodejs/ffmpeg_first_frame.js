@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // var ffmpeg = require('ffmpeg');
 //
 // try {
@@ -23,8 +25,8 @@
 
 var ffmpeg = require('fluent-ffmpeg');
 var path = 'd:/ffmpeg/bin/';
-ffmpeg.setFfmpegPath(path+'ffmpeg.exe');
-ffmpeg.setFfprobePath(path+'ffprobe.exe')
+ffmpeg.setFfmpegPath(path + 'ffmpeg.exe');
+ffmpeg.setFfprobePath(path + 'ffprobe.exe')
 // ffmpeg.setFlvtoolPath(path.'ffmpeg.exe')
 
 // ffmpeg.getAvailableFormats(function(err, formats) {
@@ -48,10 +50,23 @@ ffmpeg.setFfprobePath(path+'ffprobe.exe')
 // });
 //
 //
-ffmpeg('data/test.mp4')
-    .screenshots({
-        timestamps: [0],
-        filename: 'thumbnail-at-%s-seconds.jpg',
-        folder: 'output',
-        // size: '320x240'
+
+fs.readdir('videos', function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        console.log('videos/' + file);
+
+        ffmpeg('videos/' + file)
+            .screenshots({
+                timestamps: [1],
+                filename: file.match(/(.*)\.mp4/)[1] + '-%s.jpg',
+                folder: 'output',
+                // size: '320x240'
+            });
     });
+});
