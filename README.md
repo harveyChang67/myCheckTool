@@ -48,8 +48,12 @@ and edit plugin, whitelist in config such as:
 
     // This checks that there are no accidental echos/printfs left inside Phan's code.
     'RemoveDebugStatementPlugin',
+    
+    'RedundantAssignmentPlugin',
+    'EmptyStatementListPlugin',
 ],
 'whitelist_issue_types' => [
-    'PhanPossiblyUndeclaredVariable'
+    'PhanPossiblyUndeclaredVariable',
+    'PhanUnusedGlobalFunctionParameter'
 ],
 ```
