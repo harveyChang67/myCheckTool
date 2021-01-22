@@ -7,8 +7,7 @@
     "require": {
         "php": "7.2",
         "jaeger/querylist": "4.0",
-        "vlucas/phpdotenv": "^4.1",
-        "phlint/phlint": "^0.4.2"
+        "vlucas/phpdotenv": "^4.1"
     },
     "require-dev": {
         "vimeo/psalm": "^4.4",
