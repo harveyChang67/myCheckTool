@@ -32,3 +32,24 @@ TODO: Rule -> Auto get attribute.
 
 #   Robots.txt test
 robots.txt -> JSON Object -> robots-txt-guard
+
+
+# Phan
+```
+phan --init --init-no-composer --init-level=1 --init-analyze-file=</path/tto/file> --init-analyze-dir=<path/to/src>
+```
+
+and edit plugin, whitelist in config such as:
+```
+'plugins' => [
+
+    // Warn about using the same loop variable name as a loop variable of an outer loop.
+    'LoopVariableReusePlugin',
+
+    // This checks that there are no accidental echos/printfs left inside Phan's code.
+    'RemoveDebugStatementPlugin',
+],
+'whitelist_issue_types' => [
+    'PhanPossiblyUndeclaredVariable'
+],
+```

@@ -9,5 +9,10 @@
         "jaeger/querylist": "4.0",
         "vlucas/phpdotenv": "^4.1",
         "phlint/phlint": "^0.4.2"
+    },
+    "require-dev": {
+        "vimeo/psalm": "^4.4",
+        "phpstan/phpstan": "^0.12.68",
+        "phan/phan": "4.x"
     }
 }
