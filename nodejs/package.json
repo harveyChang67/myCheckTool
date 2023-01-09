@@ -18,7 +18,7 @@
     "puppeteer-cluster": "^0.22.0",
     "puppeteer-autoscroll-down": "^0.1.6",
     "puppeteer-page-proxy": "^1.2.8",
-    "robots-txt-guard": "^0.2.1",
+    "robots-txt-guard": "^1.0.2",
     "robots-txt-parse": "^1.0.1"
   },
   "scripts": {
